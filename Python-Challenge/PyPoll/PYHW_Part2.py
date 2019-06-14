@@ -60,8 +60,8 @@ CandTotal4 = CandidateTotal(3)
 Winner = [CandTotal1, CandTotal2, CandTotal3, CandTotal4]
 WinnerIndex = Max_Index(Winner)
 
-#This outputs what is displayed in the terminal into a csv file.  File = datafile is added to the end of the print
-#statements for proper outputing to the csv file.
+#This outputs what is displayed in the terminal into a csv file.  File = datafile is added to the end of each print
+#statement for proper outputing to the csv file.
 with open('PythonHW_Part2_Election_Results_SDB.csv', 'w') as datafile:
     print("", file = datafile)
     print("Election Results")
