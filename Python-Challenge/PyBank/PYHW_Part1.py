@@ -47,7 +47,8 @@ with open('budget_data.csv', 'r') as csv_file:
         MaxIndex = Max_Index(PL) #Uses Max_Index Macro to find index of Max value in PL list
         MinIndex = Min_Index(PL) #Uses Max_Index Macro to find index of Minimum value in PL list
 
-
+#This outputs what is displayed in the terminal into a csv file.  File = datafile is added to the end of each print
+#statement for proper outputing to the csv file.
 with open('PythonHW_Part1_Budget_Results_SDB.csv', 'w') as datafile:
     print("", file=datafile)
     print("Financial Analysis", file = datafile)
