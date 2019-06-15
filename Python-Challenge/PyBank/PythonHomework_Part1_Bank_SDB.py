@@ -13,18 +13,18 @@ MuPL = []
 MaxIndex = 0
 MinIndex = 0
 
-#Macro Declarations
-#This macro gets the average by dividing its sum by its length
+#Function Declarations
+#This function gets the average by dividing its sum by its length
 def Average(x):
     return sum(x)/len(x)
 
-#Macro to find the index for the max value of a list
+#Function to find the index for the max value of a list
 def Max_Index(x):
     max_val = max(x)
     max_idx = x.index(max_val)
     return max_idx #max_val
 
-#Macro to find the index for the minimum value of a list
+#Function to find the index for the minimum value of a list
 def Min_Index(y):
     min_val = min(y)
     min_idx = y.index(min_val)
@@ -44,8 +44,8 @@ with open('budget_data.csv', 'r') as csv_file:
         MaxPL = sorted(PL, reverse=True) #Sorts PL list in reverse for descending order
         MinPL = sorted(PL) #Sorts PL list in ascending order
         MuPL = Average(PL) #Gets the average for the PL list
-        MaxIndex = Max_Index(PL) #Uses Max_Index Macro to find index of Max value in PL list
-        MinIndex = Min_Index(PL) #Uses Max_Index Macro to find index of Minimum value in PL list
+        MaxIndex = Max_Index(PL) #Uses Max_Index function to find index of Max value in PL list
+        MinIndex = Min_Index(PL) #Uses Max_Index function to find index of Minimum value in PL list
 
 #This outputs what is displayed in the terminal into a csv file.  File = datafile is added to the end of each print
 #statement for proper outputing to the csv file.
