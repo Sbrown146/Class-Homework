@@ -9,10 +9,6 @@ MaxPL = []
 MinPL = []
 MuPL = []
 
-#Numeric Variable Declarations
-MaxIndex = 0
-MinIndex = 0
-
 #Function Declarations
 #This function gets the average by dividing its sum by its length
 def Average(x):
