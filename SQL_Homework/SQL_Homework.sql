@@ -25,7 +25,11 @@ SELECT * FROM salary_status;
 --Merge employees and salaries on emp_id for employee information
 DROP VIEW IF EXISTS employee_info;
 CREATE VIEW employee_info AS
-SELECT s.emp_no, first_name, last_name, gender, s.salary
+SELECT s.emp_no AS "Employee Number", 
+first_name AS "First Name", 
+last_name AS "Last Name", 
+gender AS "Gender", 
+s.salary AS "Salary"
 FROM employees AS e
 	JOIN salaries AS s ON (s.emp_no=e.emp_no);
 SELECT * FROM employee_info;
@@ -37,7 +41,13 @@ SELECT * FROM employee_info;
 --Employees hired in 1986
 DROP VIEW IF EXISTS employee_1986;
 CREATE VIEW employee_1986 AS
-SELECT * FROM employees
+SELECT emp_no AS "Employee Number", 
+birth_date AS "Birth Date", 
+first_name AS "First Name",
+last_name AS "Last_Name", 
+gender AS "Gender", 
+hire_date AS "Hire Date"
+FROM employees
 WHERE hire_date >= ('1986-01-01')
 AND hire_date < ('1987-01-01');
 SELECT * FROM employee_1986;
@@ -50,7 +60,13 @@ SELECT * FROM employee_1986;
 --Merge deparments, dept_emp, employees on emp_id
 DROP VIEW IF EXISTS dept_info;
 CREATE VIEW dept_info AS
-SELECT d.dept_no, d.dept_name, dm.emp_no, e.first_name, e.last_name, from_date, to_date
+SELECT d.dept_no AS "Department Number",
+d.dept_name AS "Department Name",
+dm.emp_no AS "Employee Number", 
+e.first_name AS "First Name",
+e.last_name AS "Last Name",
+from_date AS "Start Date",
+to_date AS "End Date"
 FROM dept_manager AS dm
 	JOIN departments AS d 
 	ON (d.dept_no=dm.dept_no)
@@ -65,7 +81,10 @@ SELECT * FROM dept_info;
 --Department information for employees
 DROP VIEW IF EXISTS employee_dept;
 CREATE VIEW employee_dept AS
-SELECT e.emp_no, e.first_name, e.last_name, d.dept_name
+SELECT e.emp_no, 
+e.first_name,
+e.last_name, 
+d.dept_name
 FROM employees as e
 	JOIN dept_emp AS de
 	ON (de.emp_no=e.emp_no)
@@ -80,7 +99,9 @@ SELECT * FROM employee_dept;
 --Employees with first name Hercules and last name beginning with B
 DROP VIEW IF EXISTS hercules_b;
 CREATE VIEW hercules_b AS
-SELECT first_name, last_name FROM employees
+SELECT first_name AS "First Name", 
+last_name AS "Last Name" 
+FROM employees
 WHERE first_name='Hercules'
 AND last_name LIKE 'B%';
 SELECT * FROM hercules_b;
@@ -93,7 +114,11 @@ SELECT * FROM hercules_b;
 --Use employee_dept view from question 4
 DROP VIEW IF EXISTS sales_emp;
 CREATE VIEW sales_emp AS
-SELECT * FROM employee_dept
+SELECT emp_no AS "Employee Number", 
+first_name AS "First Name",
+last_name AS "Last Name", 
+dept_name AS "Department Name"
+FROM employee_dept
 WHERE dept_name='Sales';
 SELECT * FROM sales_emp;
 
@@ -105,7 +130,11 @@ SELECT * FROM sales_emp;
 --Use employee_dept view from question 4
 DROP VIEW IF EXISTS sales_dev;
 CREATE VIEW sales_dev AS
-SELECT * FROM employee_dept
+SELECT emp_no AS "Employee Number", 
+first_name AS "First Name",
+last_name AS "Last Name", 
+dept_name AS "Department Name"
+FROM employee_dept
 WHERE dept_name='Sales' OR dept_name='Development';
 SELECT * FROM sales_dev;
 
@@ -118,8 +147,29 @@ SELECT * FROM sales_dev;
 --Hmmmmm.....Seems legit....
 DROP VIEW IF EXISTS last_name_freq;
 CREATE VIEW last_name_freq AS
-SELECT last_name, COUNT(last_name) as "Number of Repeats"
+SELECT last_name AS "Last Name", 
+COUNT(last_name) as "Number of Repeats"
 FROM employee_dept
-GROUP BY last_name
+GROUP BY "Last Name"
 ORDER BY "Number of Repeats" DESC;
 SELECT * FROM last_name_freq;
+
+
+
+--Bonus Table
+DROP TABLE IF EXISTS bonus_table;
+CREATE TABLE bonus_table AS
+SELECT s.salary,
+t.title
+FROM salaries AS s
+	JOIN titles as t
+	ON (s.emp_no=t.emp_no);
+SELECT * FROM bonus_table;
+
+--Average Salaries by title
+DROP TABLE IF EXISTS bonus_avg;
+CREATE TABLE bonus_avg AS
+SELECT title AS "Title", ROUND(AVG(salary),0) AS "Average Salary"
+FROM bonus_table AS b
+GROUP BY title;
+SELECT * FROM bonus_avg;
