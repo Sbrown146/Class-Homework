@@ -169,7 +169,7 @@ SELECT * FROM bonus_table;
 --Average Salaries by title
 DROP TABLE IF EXISTS bonus_avg;
 CREATE TABLE bonus_avg AS
-SELECT title AS "Title", ROUND(AVG(salary),0) AS "Average Salary"
+SELECT title AS "Title", ROUND(AVG(salary),0) AS "Average_Salary"
 FROM bonus_table AS b
 GROUP BY title;
 SELECT * FROM bonus_avg;
