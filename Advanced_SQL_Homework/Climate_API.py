@@ -1,3 +1,9 @@
+# Climate API
+# Homework 10 Advanced SQL
+# Scott Brown
+
+
+# Dependencies
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -6,15 +12,19 @@ import numpy as np
 import pandas as pd
 from flask import Flask, jsonify
 
+# Engine
 engine=create_engine("sqlite:///Resources/hawaii.sqlite")
 Base=automap_base()
 Base.prepare(engine, reflect=True)
 
+# Tables
 Measurement=Base.classes.measurement
 Station=Base.classes.station
 
 app=Flask(__name__)
 
+
+# Default page with 5 possible routes.
 @app.route("/")
 def welcome():
     """Populate list of all available api routes."""
@@ -27,7 +37,7 @@ def welcome():
         f"/api/v1.0/<start>/<end>"
     )
 
-# Works
+# Precipitation route
 @app.route("/api/v1.0/precipitation")
 def prcp():
     """Display all precipitation values"""
@@ -44,7 +54,7 @@ def prcp():
 
     return jsonify(all_prcp)
 
-# Works
+# Station route
 @app.route("/api/v1.0/stations")
 def station():
     """List of all station names"""
@@ -55,14 +65,14 @@ def station():
 
     return jsonify(all_names)
 
-# Works
+# Temperature route.
+# Interesting to see the query can filter using elements that not # stated to be displayed.
 @app.route("/api/v1.0/tobs")
 def temp_obs():
     """List of temperpature observations over last year"""
     session=Session(engine)
     results=session.query(Measurement.tobs).filter(Measurement.date < '2017-08-24').filter(Measurement.date > '2016-08-22').all()
 
-    #Fix to just display tobs, not both date and tobs
     all_names=list(np.ravel(results))
 
     return jsonify(all_names)
@@ -84,7 +94,7 @@ def calc_temps(start_date):
     return str(session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= start_date).all())
 
-# Works
+# Start and end route.
 @app.route("/api/v1.0/<start>/<end>")
 def calc_temps_both(start, end):
     """TMIN, TAVG, and TMAX for a list of dates.
