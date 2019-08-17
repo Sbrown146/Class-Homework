@@ -1,0 +1,140 @@
+html, body {
+    background-color: #ddd;
+}
+.topnav {
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+.topnav a {
+    float: left;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.topnav a.active {
+    background-color: rgb(70, 235, 226);
+    color: white;
+    position: absolute;
+    left: 100px;
+}
+.topnav-right {
+    float: right;
+    position: absolute;
+    right: 25px;
+}
+.footer {
+    position: fixed;
+    bottom: -600px;
+    /* bottom: 0px; */
+    text-align: center;
+    font-size: 17px;
+    background-color:rgba(0, 0, 0, 0.671);
+    color: white;
+    height: 50px;
+}
+.footer h1 {
+    font-size: 17px;
+    margin-top: 15px;
+}
+.navbar-brand{
+    background-color: rgb(14, 199, 174);
+    position: absolute;
+    text-align: center;
+    left: 100px;
+    height: 50px;
+    width: 175px;
+    margin-bottom: 25px;
+    color: white;
+    
+     
+}
+.navbar-brand:hover {
+    background-color: #ddd;
+    color: white;
+}
+.navbar {
+    height: 50px;
+}
+.nav-item a {
+    margin-top: 0px;
+    margin-right: 40px;
+}
+.tldr h1{
+    font-size: 48px;
+    color: rgb(14, 199, 174);
+    margin-top: -20px;
+    margin-bottom: 50px;
+}
+.tldr h2 {
+    font-size: 24px;
+    color: rgb(14, 199, 174);
+    margin-top: 75px;
+}
+.tldr pic {
+    position: absolute;
+    left: -100px;
+}
+.sum {
+    left: 30px;
+    margin-top: 80px;
+}
+.summary {
+    left: 160px;
+}
+.jumbo2 h2{
+    font-size: 28px;
+    color: rgb(14, 199, 174);
+    margin-bottom: 50px;
+}
+div {
+    word-wrap: break-word;
+  }
+.Humid{
+    position: absolute;
+    right: -210px;
+    top: 0px;
+    margin-bottom: 20px;
+}
+.Wind{
+    position: absolute;
+    right: 50px;
+    bottom: 0px;
+}
+.jumbo1 summary_1 {
+    position: absolute;
+    left: 0px;
+    margin-top: 50px;
+}
+.jumbo1{
+    width: 90%;
+    margin-left: 70px;
+    margin-top: 75px;
+}
+.jumbo2{
+    position: absolute;
+    left: 950px;
+    top: 0px;
+    margin-top: 125px;
+}
+.main {
+    position: absolute;
+    margin-left: -15px;
+}
+.Humidity:hover {
+    border: solid 2px rgb(14, 199, 174);
+}
+.Temp:hover {
+    border: solid 2px rgb(14, 199, 174);
+}
+.Wind:hover {
+    border: solid 2px rgb(14, 199, 174);
+}
+.Cloud:hover {
+    border: solid 2px rgb(14, 199, 174);
+}
