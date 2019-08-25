@@ -1,14 +1,19 @@
+# Scrape_mars.py Scott Brown
+
+# Dependencies
 from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
 
-
+# Declare blank dictionary
 mars_data={}
 
-
+# Set browser path
 executable_path = {"executable_path": "chromedriver.exe"}
 browser=Browser("chrome", **executable_path, headless=False)
 
+
+# News function.  Only thing added not in jupyter is that the new_title and news_paragraph variables are added to the global mars_data dictionary.  This is the same for all the functions in this python file.
 
 def Mars_News():
     

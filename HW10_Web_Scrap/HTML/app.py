@@ -1,17 +1,24 @@
+# App.py Scott Brown
+
+# Dependencies
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
 
+
+# Flask jargon
 app=Flask(__name__)
 
 mongo=PyMongo(app, uri="mongodb://localhost:27017/onto_mars")
 
+
+# Index route
 @app.route("/")
 def index():
     mars=mongo.db.mars.find_one()
     return render_template("index.html", mars=mars)
 
-
+# Scrape route
 @app.route("/scrape")
 def scrape():
 

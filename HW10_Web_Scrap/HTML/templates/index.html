@@ -1,12 +1,17 @@
 <!--Homework 10 Webscraping Scott Brown-->
 
-<!--Apologies that this was not completed in time.  While I feel I understand the concept, getting all components (chromedriver, the html file, app.py, scrape_mars.py, the local host formatting, probably a dozen more thing that I am missing,...to work together was the biggest challenge for this homework that was never completed.  At the time of submission, the app.py runs but produces an error I cannot find a reference to on how to fix and the local host html lacks any css or bootstrap (I have tried about 12 different means to get this to work with no avail).  I am sure it is probably an easy fix but alas, the story of my life.-->
+<!--So while I feel I understand the concept and syntax for webscraping, getting all the components (chromedriver, the html file, app.py, scrape_mars.py, the local host formatting, css/bootstrap, probably a dozen more things that I was missing,...) to work together was the biggest challenge for this homework.  Getting everything to work in sync took almost as much time as getting everything set up which then about half the amount of time that I spent on the html formatting that ended up going unused.
 
-<!--The index.html has the format showing how the local host is supposed to look when opened.-->
+Ironically, after a simple change of using a global dictionary within the scrape_mars.py file, the scrape button actually produced new data and worked correctly.  However, I could not get any of the css/bootstrap files to work with the localhost despite over 20 or so brute force attempts to do so (I assume this is thing that can actually happen).  This why the local host page looks rather disheveled.  I kept the old formatting just incase one of those attempts worked as it would be easy to fix since I had originally made the index.html with proper formatting to reference.
 
+This homework was by far the hardest so far.  Most homework assignments range from having a small to large amount of work to them but have not been overly complicated (they take some time but are not difficult and easy to find references if stuck). This, along the HTML homework, carried a pretty hefty workload while being pretty complex.  Html has been tough to digest though I am starting to get the hang of it. It was just compounding it with the other components (like setting up everything in app.py) in this homework that made it even harder to completely process.  However, seeing the app.py actually work properly was extremely satisfying in the end.  Pretty cool stuff. </rant_over>
+
+-->
 
 <!DOCTYPE html>
 <html lang="en">
+
+<!--header start-->
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +25,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha284-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
+<!--header end-->
 
+
+<!--Page guts start-->
+
+
+<!--background, initial jumbotron and scrape button-->
 <body style="background-image: url(file:///C:/DV_SDB/Class-Homework/HW10_Web_Scrap/HTML/pics/background.jpg);"> 
     <div class="container">
         <div class="jumbotron text-center text-white" style="background-color:transparent">
@@ -29,6 +40,8 @@
         </div>
     </div>
 
+
+<!--Mars news and paragraph information-->
     <div class="row">
         <div class="col-md-12 title text-white" style="left: 125px; padding-bottom:25px;">
             <h2><strong>Latest Mars News:</strong></h2>
@@ -37,6 +50,8 @@
         </div>
     </div>
 
+
+<!--Featured Mars Image-->
     <div class="row">
         <div class="col-md-8 text-left text-white" style="left: 125px;">
             <h2><strong>Featured Mars Image</strong></h2>
@@ -44,34 +59,44 @@
             <img src="{{mars.Featured_Image_URL}}" style="border:5px solid rgb(129, 61, 9);">
         </div>
 
+
+<!--Current Weather Tweet-->
         <div class="col-md-4 text-left text-white" style="right: 125px;">
-            <div class="jumbotron" style="background-image: url(file:///C:/DV_SDB/Class-Homework/HW10_Web_Scrap/HTML/pics/weather.jpg); background-position-y: 250px; height: 200px; width: 50%; border:5px solid rgb(129, 61, 9);">
+            <div class="jumbotron" style="background-image: url(file:///C:/DV_SDB/Class-Homework/HW10_Web_Scrap/HTML/pics/weather.jpg); background-position-y: 250px; height: 100px; width: 50%; border:5px solid rgb(129, 61, 9);">
                 <h4><strong>Current Weather on Mars</strong></h4>
                 <p>{{mars.Latest_Weather_Tweet}}</p>
-            </br></br>
-                <h5 style="margin-left: 0px;"><strong>Mars Facts</strong></h5>
-                {{mars.Mars_Facts}}
+                <h5 style="margin-left: 0px; font-size: 16px;"><strong>Mars Facts</strong></h5>
+                {{mars.Mars_Facts|safe}}
+
+
+                <!--This is old html formatting that I kept incase I got the css/bootstrap working properly-->
+
                 <!-- <table border="1" class="dataframe" style="background-image: url(surface.jpg); background-position-y: -550px; width:425px; margin-left: -30px; border:5px solid rgb(129, 61, 9);"> -->
             </div>
         </div>
     </div>
 
-  </br></br></br></br>
-<div class ="row">
+
+    <!--Improvised breaks.  Never thought I would use them but here we are.-->
+  </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+
+<!--Fairly simple loop to display each of the four hemisphere pictures with their titles.-->
+  <div class ="row">
     <div class = "col-md-12">
-        <h3><strong><center>Mars Hemispheres</center></strong></h3>
+        <h3><strong><left>Mars Hemispheres</left></strong></h3>
         <div class="row">
         {% for hemisphere in mars.Hemisphere_URLs %}
           <div class = "col-md-6">
-            <div class = "thumbnail">
-              <img src = "{{hemisphere.Image_Url}}" height="500px" width="500px">
+              <img src = "{{hemisphere.Image_Url}}" height="400px" width="400px">
               <h3>{{hemisphere.Title}}</h3>
-            </div>
             </div>
             </div>
             {% endfor %}
     </div>
 </div>
+
+<!--More old formatting that I kept just it case it could be referenced later-->
 
 <!-- <div class="container hemispheres text-center text-white" style="margin-top: 200px;">
     <h6 style="font-size: 32px;"><strong>Mars Hemispheres</strong></h6>
@@ -110,6 +135,9 @@
 </div> -->
 
 
+
+
+<!--Page Guts end-->
 
 </body>
 
