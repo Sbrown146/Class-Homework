@@ -1,0 +1,25 @@
+.h2 {
+    font-size: 32px;
+}
+.jumbotron h4 {
+    margin-top: -30px;
+}
+.dataframe th {
+    text-align: left;
+    border:2px solid white;
+}
+.dataframe tr, td {
+    border:2px solid white;
+}
+.hemispheres img {
+    width: 500px;
+    height: 500px;
+    max-width:95%;
+    border:5px solid rgb(129, 61, 9);
+    margin-right: 0px;
+    border-bottom: 30px solid rgb(129, 61, 9)
+}
+.hemispheres figcaption {
+    margin-top: -30px;
+    font-size: 20px;
+}
