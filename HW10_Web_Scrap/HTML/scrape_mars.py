@@ -51,7 +51,11 @@ def Mars_Weather():
     soup=BeautifulSoup(mars_weather_html, 'lxml')
 
     weather_tweet=soup.find("div", class_="js-tweet-text-container").text
-    weather_tweet_strip=weather_tweet[9:-27]
+    #This works for any standard weather tweet
+#     weather_tweet_strip=weather_tweet[9:-27]
+
+#   This is the format for the tweet on 8/27 about no further updates for 2 weeks.  It is not in the same format as the standard weather tweets.
+    weather_tweet_strip=weather_tweet[:-27]
     mars_weather=weather_tweet_strip
     mars_data["Latest_Weather_Tweet"]=mars_weather
     return mars_data
